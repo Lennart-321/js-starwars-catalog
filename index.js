@@ -72,15 +72,19 @@ charactersContainer.addEventListener("click", e => {
 //})();
 nextElem.addEventListener("click", () => fetchPage(true));
 prevElem.addEventListener("click", () => fetchPage(false));
+function withPostfixIfNr(nr, postfix) {
+    return Number(nr) ? nr + postfix : nr;
+}
 
 async function loadCharacter(url) {
     //console.log("loadCharacter", url);
     const response = await fetch(url);
     const info = await response.json();
+    console.log("loadCharacter", info);
     characterInfoContainer.innerHTML = `
         <p id="character-name">${info.name}</p>
-        <p class="info">Heigt: ${info.height}cm</p>
-        <p class="info">Mass: ${info.mass}kg</p>
+        <p class="info">Heigt: ${withPostfixIfNr(info.height, " cm")}</p>
+        <p class="info">Mass: ${withPostfixIfNr(info.mass, " kg")}</p>
         <p class="info">Hair color: ${info.hair_color}</p>
         <p class="info">Skin color: ${info.skin_color}</p>
         <p class="info">Eye color: ${info.eye_color}</p>
@@ -94,9 +98,9 @@ async function loadPlanet(url) {
     const info = await response.json();
     planetInfoContainer.innerHTML = `
         <p id="character-name">${info.name}</p>
-        <p class="info">Rotation period: ${info.rotation_period}h</p>
-        <p class="info">Orbital period: ${info.orbital_period} days</p>
-        <p class="info">Diameter: ${info.diameter}km</p>
+        <p class="info">Rotation period: ${withPostfixIfNr(info.rotation_period, " h")}</p>
+        <p class="info">Orbital period: ${withPostfixIfNr(info.orbital_period, " days")}</p>
+        <p class="info">Diameter: ${withPostfixIfNr(info.diameter, " km")}</p>
         <p class="info">Climate: ${info.climate}</p>
         <p class="info">Gravity: ${info.gravity}</p>
         <p class="info">Terrain: ${info.terrain}</p>`;
