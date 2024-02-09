@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    background-color: #444;
+}
+header {
+    height: 150px;
+    background-image: url("./header_image.jpg");
+    background-size: cover;
+}
+header p {
+    line-height: 100px;
+    margin: 30px;
+    color: yellow;
+}
+main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 150px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    position: absolute;
+    /* width: 500px;
+    height: 500px; */
+    /* width: 90%; */
+    top: -40px;
+    right: 30px;
+    left: 30px;
+    bottom: 10px;
+
+    /* background-color: azure; */
+}
+.card {
+    /* display: flex;
+    flex-direction: column;
+    align-content: center; */
+    display: grid;
+    grid-template-rows: 1fr 4fr 4fr;
+
+    text-align: center;
+    width: 230px;
+    height: 350px;
+    background-color: #888;
+    margin: 8px;
+
+    border-radius: 5px;
+}
+#character-list {
+    grid-template-rows: 1fr 7.3fr 0.7fr;
+}
+.card-header {
+    margin: 0;
+    line-height: 38px;
+    color: yellow;
+}
+.card div {
+    text-align: start;
+    height: 100%;
+}
+.info {
+    margin: 3px 5px;
+    font-size: 11px;
+}
+
+#character-name,
+#planet-name {
+    margin: 6px 3px;
+}
+
+#character-info {
+    background-color: #eee;
+}
+#planet-info {
+    background-color: #777;
+    border-radius: 0 0 5px 5px;
+    color: white;
+}
+
+.character {
+    margin: 0;
+    padding: 3px 5px;
+    cursor: pointer;
+}
+.character:nth-of-type(even) {
+    background-color: #ddd;
+}
+.character:nth-of-type(odd) {
+    background-color: #777;
+    color: white;
+}
+.character:hover {
+    background-color: #fff;
+    color: black;
+}
+#prev:hover,
+#next:hover {
+    cursor: pointer;
+}
+
+/* *************************** */
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    box-shadow: 0 0 0 3px #fff inset;
+    border-radius: 50%;
+    position: relative;
+}
+.loader::before,
+.loader::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: calc(50% - 12.5px);
+    box-shadow: inherit;
+    width: 25px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform-origin: 50% calc(100% - 5px);
+    animation: l7 1.5s linear infinite;
+}
+.loader::after {
+    top: calc(100% + 2px);
+    transform-origin: 50% -27px;
+    animation-delay: -0.75s;
+}
+@keyframes l7 {
+    to {
+        transform: rotate(360deg);
+    }
+}
